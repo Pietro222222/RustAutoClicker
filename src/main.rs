@@ -46,19 +46,10 @@ fn main() {
                     println!("We could not send {:?}", event_type);
                 }
             };
-            // std::thread::sleep(Duration::from_millis(20));
         };
 
         loop {
             let mouse_state = MOUSE.lock().unwrap().clone();
-            /* match rx.recv() {
-                Ok(d) => {
-                    println!("{:?}", d);
-                    mouse_state = d;
-                }
-                Err(e) => {}
-            };*/
-            //println!("{:?}", mouse_state);
             if mouse_state.bleft {
                 send(&EventType::ButtonPress(Button::Left));
                 send(&EventType::ButtonRelease(Button::Left));
